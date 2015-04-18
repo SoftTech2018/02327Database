@@ -1,6 +1,6 @@
 package test;
 
-import daoimpl.MySQLOperatoerDAO;
+import daoimpl.OperatoerDAO;
 import daointerfaces.DALException;
 import dto.OperatoerDTO;
 
@@ -17,7 +17,7 @@ public class Main {
 		catch (SQLException e) { e.printStackTrace(); }
 		
 		System.out.println("Operatoer nummer 3:");
-		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
+		OperatoerDAO opr = new OperatoerDAO();
 		try { System.out.println(opr.getOperatoer(3)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
