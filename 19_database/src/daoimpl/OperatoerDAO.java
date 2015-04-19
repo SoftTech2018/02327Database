@@ -32,9 +32,8 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 	public void updateOperatoer(OperatoerDTO opr) throws DALException {
 		Connector.doUpdate(
-				"UPDATE operatoer SET  opr_navn = '" + opr.getOprNavn() + "', ini =  '" + opr.getIni() + 
-				"', cpr = '" + opr.getCpr() + "', password = '" + opr.getPassword() + "' WHERE opr_id = " +
-				opr.getOprId()
+				"UPDATE operatoer SET opr_navn = '"+opr.getOprNavn()+"', ini =  '"+opr.getIni()+
+				"', cpr = '"+opr.getCpr()+"', password = '"+opr.getPassword()+"' WHERE opr_id = "+opr.getOprId()
 		);
 	}
 	

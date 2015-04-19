@@ -14,8 +14,7 @@ public class ProduktBatchDAO implements IProduktBatchDAO {
 
 	@Override
 	public ProduktBatchDTO getProduktBatch(int pbId) throws DALException {
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = " + pbId);
-		
+		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = " + pbId);		
 	    try {
 	    	if (!rs.first()) throw new DALException("Produktbatch " + pbId + " findes ikke");
 	    	return new ProduktBatchDTO (rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recept_id"));
@@ -46,7 +45,7 @@ public class ProduktBatchDAO implements IProduktBatchDAO {
 	@Override
 	public void updateProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
 		Connector.doUpdate(
-				"UPDATE produktbatch SET  pb_id = " + produktbatch.getPbId() + ", status =  " + produktbatch.getStatus() + 
+				"UPDATE produktbatch SET pb_id = " + produktbatch.getPbId() + ", status =  " + produktbatch.getStatus() + 
 				", recept_id = " + produktbatch.getReceptId() + " WHERE pb_id = " + produktbatch.getPbId()
 		);
 	}
