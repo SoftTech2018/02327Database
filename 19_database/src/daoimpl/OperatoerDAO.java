@@ -19,7 +19,6 @@ public class OperatoerDAO implements IOperatoerDAO {
 	    	return new OperatoerDTO (rs.getInt("opr_id"), rs.getString("opr_navn"), rs.getString("ini"), rs.getString("cpr"), rs.getString("password"));
 	    }
 	    catch (SQLException e) {throw new DALException(e); }
-		
 	}
 	
 	public void createOperatoer(OperatoerDTO opr) throws DALException {		
