@@ -1,0 +1,6 @@
+Select count(raavare.raavare_id), raavare_navn from raavare
+join raavarebatch on raavare.raavare_id=raavarebatch.raavare_id
+group by raavare.raavare_id
+having count(raavare.raavare_id) >=2;
+
+
