@@ -26,10 +26,8 @@ public class ReceptDAO implements IReceptDAO {
 	public List<ReceptDTO> getReceptList() throws DALException {
 		List<ReceptDTO> list = new ArrayList<ReceptDTO>();
 		ResultSet rs = Connector.doQuery("SELECT * FROM recept");
-		try
-		{
-			while (rs.next()) 
-			{
+		try {
+			while (rs.next()) {
 				list.add(new ReceptDTO(rs.getInt("recept_id"), rs.getString("recept_navn")));
 			}
 		}
