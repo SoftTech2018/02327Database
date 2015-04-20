@@ -45,7 +45,7 @@ public class ProduktBatchDAO implements IProduktBatchDAO {
 	@Override
 	public void updateProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
 		Connector.doUpdate(
-				"UPDATE produktbatch SET pb_id = " + produktbatch.getPbId() + ", status =  " + produktbatch.getStatus() + 
+				"UPDATE produktbatch SET status =  " + produktbatch.getStatus() + 
 				", recept_id = " + produktbatch.getReceptId() + " WHERE pb_id = " + produktbatch.getPbId()
 		);
 	}
