@@ -8,7 +8,6 @@ import java.util.List;
 import connector.Connector;
 import daointerfaces.DALException;
 import daointerfaces.IReceptKompDAO;
-import dto.ProduktBatchKompDTO;
 import dto.ReceptKompDTO;
 
 public class ReceptKompDAO implements IReceptKompDAO {
