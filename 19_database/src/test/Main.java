@@ -1,11 +1,6 @@
 package test;
 
-import daoimpl.OperatoerDAO;
-import daointerfaces.DALException;
-import dto.OperatoerDTO;
-
 import java.sql.SQLException;
-
 import connector.Connector;
 
 public class Main {
@@ -16,36 +11,19 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-		System.out.println("Operatoer nummer 3:");
-		OperatoerDAO opr = new OperatoerDAO();
-		try { System.out.println(opr.getOperatoer(3)); }
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		System.out.println("Indsaettelse af ny operatoer med opr_id =  4");
-		OperatoerDTO oprDTO = new OperatoerDTO(4,"Don Juan","DJ","000000-0000","iloveyou");
-		try { opr.createOperatoer(oprDTO); }
-		catch (DALException e) { System.out.println(e.getMessage()); }	
-		
-		System.out.println("Operatoer nummer 4:");
-		try { System.out.println(opr.getOperatoer(4)); }
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		System.out.println("Opdatering af initialer for operatoer nummer 4");
-		oprDTO.setIni("DoJu");
-		try { opr.updateOperatoer(oprDTO); }
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		System.out.println("Operatoer nummer 4:");
-		try { System.out.println(opr.getOperatoer(4)); }
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		System.out.println("Alle operatoerer:");
-		try { System.out.println(opr.getOperatoerList()); }
-		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		System.out.println("Operatoer nummer 5:");
-		try { System.out.println(opr.getOperatoer(5)); }
-		catch (DALException e) { System.out.println(e.getMessage()); }		
-		
+		OperatoerTest oprTest = new OperatoerTest();
+		ProduktBatchTest pbTest = new ProduktBatchTest();
+		ProduktBatchKompTest pbkTest = new ProduktBatchKompTest();
+		ReceptTest rTest = new ReceptTest();
+		ReceptKompTest rkTest = new ReceptKompTest();
+		RaavareTest raTest = new RaavareTest();
+		RaavareBatchTest rabTest = new RaavareBatchTest();
+		oprTest.listTest();
+		pbTest.listTest();
+		pbkTest.listTest();
+		rTest.listTest();
+		rkTest.listTest();
+		raTest.listTest();
+		rabTest.listTest();
 	}
 }
