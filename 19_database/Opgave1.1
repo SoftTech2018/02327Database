@@ -1,0 +1,9 @@
+Select count(raavare.raavare_id), raavare_navn from raavare
+join raavarebatch on raavare.raavare_id=raavarebatch.raavare_id
+group by raavare.raavare_id
+having count(raavare.raavare_id) >=2;
+
+1: Der tælles hvor mange gange en råvare har samme id, og det bliver talt som navnet
+2: Når raavare_id er det samme som raavarebatchens raavare_id, så joines navnene fra før med raavarebatch
+3: navnene grupperes i forhold til hvilken id de har og hvis deres count er 2 eller højere
+
