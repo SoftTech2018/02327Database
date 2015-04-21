@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import connector.Connector;
 import daoimpl.OperatoerDAO;
-import daoimpl.ProduktBatchDAO;
 import daoimpl.ProduktBatchKompDAO;
 import daoimpl.RaavareBatchDAO;
 import daoimpl.RaavareDAO;
@@ -19,14 +18,12 @@ import daoimpl.ReceptDAO;
 import daoimpl.ReceptKompDAO;
 import daointerfaces.DALException;
 import daointerfaces.IOperatoerDAO;
-import daointerfaces.IProduktBatchDAO;
 import daointerfaces.IProduktBatchKompDAO;
 import daointerfaces.IRaavareBatchDAO;
 import daointerfaces.IRaavareDAO;
 import daointerfaces.IReceptDAO;
 import daointerfaces.IReceptKompDAO;
 import dto.OperatoerDTO;
-import dto.ProduktBatchDTO;
 import dto.ProduktBatchKompDTO;
 import dto.RaavareBatchDTO;
 import dto.RaavareDTO;
@@ -36,7 +33,6 @@ import dto.ReceptKompDTO;
 public class OperatoerJunit {
 	
 	IOperatoerDAO oprDAO;
-	IProduktBatchDAO produktBDAO;
 	IProduktBatchKompDAO produktBKDAO;
 	IReceptDAO receptDAO;
 	IReceptKompDAO receptKDAO;
@@ -61,7 +57,6 @@ public class OperatoerJunit {
 		catch (SQLException e) { e.printStackTrace(); }
 		
 		oprDAO = new OperatoerDAO();
-		produktBDAO = new ProduktBatchDAO();
 		produktBKDAO = new ProduktBatchKompDAO();
 		receptDAO = new ReceptDAO();
 		receptKDAO = new ReceptKompDAO();

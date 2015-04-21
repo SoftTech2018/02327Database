@@ -11,11 +11,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import connector.Connector;
-import daoimpl.OperatoerDAO;
 import daoimpl.ProduktBatchDAO;
 import daointerfaces.DALException;
 import daointerfaces.IProduktBatchDAO;
-import dto.OperatoerDTO;
 import dto.ProduktBatchDTO;
 
 public class ProduktBatchJunit {
