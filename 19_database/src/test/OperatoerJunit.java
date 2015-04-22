@@ -33,7 +33,7 @@ import dto.ReceptKompDTO;
 public class OperatoerJunit {
 	
 	IOperatoerDAO oprDAO;
-	IProduktBatchKompDAO produktBKDAO;
+	
 	IReceptDAO receptDAO;
 	IReceptKompDAO receptKDAO;
 	IRaavareDAO raavareDAO;
@@ -57,7 +57,7 @@ public class OperatoerJunit {
 		catch (SQLException e) { e.printStackTrace(); }
 		
 		oprDAO = new OperatoerDAO();
-		produktBKDAO = new ProduktBatchKompDAO();
+		
 		receptDAO = new ReceptDAO();
 		receptKDAO = new ReceptKompDAO();
 		raavareDAO = new RaavareDAO();
