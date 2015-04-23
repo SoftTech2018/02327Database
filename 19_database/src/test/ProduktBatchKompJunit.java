@@ -69,12 +69,28 @@ public class ProduktBatchKompJunit {
 				}
 			}
 			pbID++;
-			rbID++;
 			double tara = pbID+100.99;
 			double netto = rbID+100.99;
-			produktBKDAO.createProduktBatchKomp(new ProduktBatchKompDTO(pbID, rbID, tara, netto, 0));
+			produktBKDAO.createProduktBatchKomp(new ProduktBatchKompDTO(pbID, rbID, tara, netto, 1));
 			assertEquals(tara, produktBKDAO.getProduktBatchKomp(pbID, rbID).getTara(), 0.01);
 			assertEquals(netto, produktBKDAO.getProduktBatchKomp(pbID, rbID).getNetto(), 0.01);
+		} catch (DALException e) {e.printStackTrace();}		
+	}
+	
+	@Test
+	public void updateProduktBatchKompTest() {
+		int pbID = 0, rbID = 0;
+		try {
+			for(ProduktBatchKompDTO pbkDto : produktBKDAO.getProduktBatchKompList()){
+				if (String.valueOf(pbkDto.getTara()).startsWith("10")){
+					pbID = pbkDto.getPbId();
+					rbID = pbkDto.getRbId();
+					break;
+				}				
+			}
+			double tara = produktBKDAO.getProduktBatchKomp(pbID, rbID).getTara();
+			produktBKDAO.updateProduktBatchKomp(new ProduktBatchKompDTO(pbID, rbID, tara+400,produktBKDAO.getProduktBatchKomp(pbID, rbID).getNetto(), produktBKDAO.getProduktBatchKomp(pbID, rbID).getOprId()));
+			assertEquals(400+tara, produktBKDAO.getProduktBatchKomp(pbID, rbID).getTara(), 0.01);
 		} catch (DALException e) {e.printStackTrace();}		
 	}
 

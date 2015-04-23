@@ -34,7 +34,7 @@ public class OperatoerJunit {
 	
 	IOperatoerDAO oprDAO;
 	
-	IReceptDAO receptDAO;
+	
 	IReceptKompDAO receptKDAO;
 	IRaavareDAO raavareDAO;
 	IRaavareBatchDAO raavareBDAO;
@@ -58,7 +58,7 @@ public class OperatoerJunit {
 		
 		oprDAO = new OperatoerDAO();
 		
-		receptDAO = new ReceptDAO();
+		
 		receptKDAO = new ReceptKompDAO();
 		raavareDAO = new RaavareDAO();
 		raavareBDAO = new RaavareBatchDAO();
