@@ -36,7 +36,7 @@ public class OperatoerJunit {
 	
 	
 	IReceptKompDAO receptKDAO;
-	IRaavareDAO raavareDAO;
+	
 	IRaavareBatchDAO raavareBDAO;
 	
 	@BeforeClass
@@ -60,7 +60,7 @@ public class OperatoerJunit {
 		
 		
 		receptKDAO = new ReceptKompDAO();
-		raavareDAO = new RaavareDAO();
+		
 		raavareBDAO = new RaavareBatchDAO();
 	}
 
