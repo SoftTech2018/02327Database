@@ -37,7 +37,7 @@ public class OperatoerJunit {
 	
 	IReceptKompDAO receptKDAO;
 	
-	IRaavareBatchDAO raavareBDAO;
+	
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -61,7 +61,7 @@ public class OperatoerJunit {
 		
 		receptKDAO = new ReceptKompDAO();
 		
-		raavareBDAO = new RaavareBatchDAO();
+		
 	}
 
 	@After
