@@ -14,10 +14,12 @@ public class TextReader {
 	
 	private File sqlFileCommands;
 	private String[] sqlCommands;
+	private String illegalString;
 	
 	public TextReader() throws FileNotFoundException{
 		sqlFileCommands = new File("files/sqlCommands.txt");
 		sqlCommands = readFile(sqlFileCommands);
+		illegalString = "#";
 	}
 	
 	private String[] readFile(File fil) throws FileNotFoundException{
@@ -44,27 +46,27 @@ public class TextReader {
 	
 	public String getOperatoer(int oprID){
 		String output = sqlCommands[0];
-		output = output.replaceFirst("#1", Integer.toString(oprID));
+		output = output.replaceFirst(illegalString + "1", Integer.toString(oprID));
 		return output;
 	}
 	
 	public String createOperatoer(OperatoerDTO opr){
 		String output = sqlCommands[1];
-		output = output.replaceFirst("#1", Integer.toString(opr.getOprId())); // OprID
-		output = output.replaceFirst("#2", opr.getOprNavn());
-		output = output.replaceFirst("#3", opr.getIni());
-		output = output.replaceFirst("#4", opr.getCpr());
-		output = output.replaceFirst("#5", opr.getPassword());
+		output = output.replaceFirst(illegalString + "1", Integer.toString(opr.getOprId())); // OprID
+		output = output.replaceFirst(illegalString + "2", opr.getOprNavn());
+		output = output.replaceFirst(illegalString + "3", opr.getIni());
+		output = output.replaceFirst(illegalString + "4", opr.getCpr());
+		output = output.replaceFirst(illegalString + "5", opr.getPassword());
 		return output;
 	}
 	
 	public String updateOperatoer(OperatoerDTO opr){
 		String output = sqlCommands[2];
-		output = output.replaceFirst("#1", opr.getOprNavn());
-		output = output.replaceFirst("#2", opr.getIni());
-		output = output.replaceFirst("#3", opr.getCpr());
-		output = output.replaceFirst("#4", opr.getPassword());
-		output = output.replaceFirst("#5", Integer.toString(opr.getOprId())); // OprID
+		output = output.replaceFirst(illegalString + "1", opr.getOprNavn());
+		output = output.replaceFirst(illegalString + "2", opr.getIni());
+		output = output.replaceFirst(illegalString + "3", opr.getCpr());
+		output = output.replaceFirst(illegalString + "4", opr.getPassword());
+		output = output.replaceFirst(illegalString + "5", Integer.toString(opr.getOprId())); // OprID
 		return output;
 	}
 
