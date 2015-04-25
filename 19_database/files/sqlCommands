@@ -1,4 +1,0 @@
-SELECT * FROM operatoer WHERE opr_id = 1
-INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES ( 1, '2', '3', '4', '5')
-UPDATE operatoer SET opr_navn = '1', ini = '2', cpr = '3', password = '4' WHERE opr_id = 5
-SELECT * FROM operatoer

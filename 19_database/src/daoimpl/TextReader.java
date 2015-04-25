@@ -44,27 +44,27 @@ public class TextReader {
 	
 	public String getOperatoer(int oprID){
 		String output = sqlCommands[0];
-		output.replaceAll("1", Integer.toString(oprID));
+		output = output.replaceFirst("#1", Integer.toString(oprID));
 		return output;
 	}
 	
 	public String createOperatoer(OperatoerDTO opr){
 		String output = sqlCommands[1];
-		output.replaceAll("1", Integer.toString(opr.getOprId())); // OprID
-		output.replaceAll("2", opr.getOprNavn());
-		output.replaceAll("3", opr.getIni());
-		output.replaceAll("4", opr.getCpr());
-		output.replaceAll("5", opr.getPassword());
+		output = output.replaceFirst("#1", Integer.toString(opr.getOprId())); // OprID
+		output = output.replaceFirst("#2", opr.getOprNavn());
+		output = output.replaceFirst("#3", opr.getIni());
+		output = output.replaceFirst("#4", opr.getCpr());
+		output = output.replaceFirst("#5", opr.getPassword());
 		return output;
 	}
 	
 	public String updateOperatoer(OperatoerDTO opr){
 		String output = sqlCommands[2];
-		output.replaceAll("1", opr.getOprNavn());
-		output.replaceAll("2", opr.getIni());
-		output.replaceAll("3", opr.getCpr());
-		output.replaceAll("4", opr.getPassword());
-		output.replaceAll("5", Integer.toString(opr.getOprId())); // OprID
+		output = output.replaceFirst("#1", opr.getOprNavn());
+		output = output.replaceFirst("#2", opr.getIni());
+		output = output.replaceFirst("#3", opr.getCpr());
+		output = output.replaceFirst("#4", opr.getPassword());
+		output = output.replaceFirst("#5", Integer.toString(opr.getOprId())); // OprID
 		return output;
 	}
 
