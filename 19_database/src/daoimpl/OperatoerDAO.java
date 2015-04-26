@@ -17,6 +17,11 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 	public OperatoerDAO() throws FileNotFoundException{
 		txt = new TextReader();
+		try {
+			Connector.doUpdate("create or replace view oprView as select opr_id, opr_navn, ini from operatoer");
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
@@ -49,7 +54,11 @@ public class OperatoerDAO implements IOperatoerDAO {
 		catch (SQLException e) { throw new DALException(e); }
 		return list;
 	}
+	
+	public ResultSet getView() throws DALException {
+		return Connector.doQuery("select * from oprView");
 		
+	}
 		
 }
 	

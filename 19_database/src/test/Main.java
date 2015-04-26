@@ -1,11 +1,13 @@
 package test;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import connector.Connector;
+import daointerfaces.DALException;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, DALException {
 		try { new Connector(); } 
 		catch (InstantiationException e) { e.printStackTrace(); }
 		catch (IllegalAccessException e) { e.printStackTrace(); }
