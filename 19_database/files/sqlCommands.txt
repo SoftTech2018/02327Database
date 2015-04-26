@@ -2,3 +2,12 @@ SELECT * FROM operatoer WHERE opr_id = #1
 INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES ( #1, '#2', '#3', '#4', '#5')
 UPDATE operatoer SET opr_navn = '#1', ini = '#2', cpr = '#3', password = '#4' WHERE opr_id = #5
 SELECT * FROM operatoer
+SELECT * FROM produktbatch WHERE pb_id = #1
+SELECT * FROM produktbatch
+INSERT INTO produktbatch (pb_id, status, recept_id) VALUES ( #1, #2, #3)
+UPDATE produktbatch SET status =  #1, recept_id = #2 WHERE pb_id = #3
+SELECT * FROM produktbatchkomponent WHERE pb_id = #1 and rb_id = #2
+SELECT * FROM produktbatchkomponent where pb_id = #1
+SELECT * FROM produktbatchkomponent
+INSERT INTO produktbatchkomponent (pb_id, rb_id, tara, netto, opr_id) VALUES (#1, #2, #3, #4, #5)
+UPDATE produktbatchkomponent SET tara = #1, netto#2, opr_id#3 WHERE pb_id = #4 and rb_id = #5

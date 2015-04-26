@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.OperatoerDTO;
+import dto.ProduktBatchDTO;
+import dto.ProduktBatchKompDTO;
 
 public class TextReader {
 	
@@ -52,7 +54,7 @@ public class TextReader {
 	
 	public String createOperatoer(OperatoerDTO opr){
 		String output = sqlCommands[1];
-		output = output.replaceFirst(illegalString + "1", Integer.toString(opr.getOprId())); // OprID
+		output = output.replaceFirst(illegalString + "1", Integer.toString(opr.getOprId()));
 		output = output.replaceFirst(illegalString + "2", opr.getOprNavn());
 		output = output.replaceFirst(illegalString + "3", opr.getIni());
 		output = output.replaceFirst(illegalString + "4", opr.getCpr());
@@ -66,7 +68,62 @@ public class TextReader {
 		output = output.replaceFirst(illegalString + "2", opr.getIni());
 		output = output.replaceFirst(illegalString + "3", opr.getCpr());
 		output = output.replaceFirst(illegalString + "4", opr.getPassword());
-		output = output.replaceFirst(illegalString + "5", Integer.toString(opr.getOprId())); // OprID
+		output = output.replaceFirst(illegalString + "5", Integer.toString(opr.getOprId()));
+		return output;
+	}
+	
+	public String getProductBatch(int pbID){
+		String output = sqlCommands[5];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(pbID));
+		return output;
+	}
+	
+	public String createProductBatch(ProduktBatchDTO produktbatch){
+		String output = sqlCommands[7];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(produktbatch.getPbId()));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(produktbatch.getStatus()));
+		output = output.replaceFirst(illegalString + "3", Integer.toString(produktbatch.getReceptId()));
+		return output;
+	}
+	
+	public String updateProduktBatch(ProduktBatchDTO produktbatch){
+		String output = sqlCommands[8];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(produktbatch.getStatus()));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(produktbatch.getReceptId()));
+		output = output.replaceFirst(illegalString + "3", Integer.toString(produktbatch.getPbId()));
+		return output;
+	}
+	
+	public String getProduktBatchKomp(int pbId, int rbId){
+		String output = sqlCommands[9];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(pbId));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(rbId));
+		return output;
+		}
+	
+	public String getProduktBatchKompList(int pbId){
+		String output = sqlCommands[10];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(pbId));
+		return output;
+	}
+	
+	public String createProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent){
+		String output = sqlCommands[12];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(produktbatchkomponent.getPbId()));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(produktbatchkomponent.getRbId()));
+		output = output.replaceFirst(illegalString + "3", Double.toString(produktbatchkomponent.getTara()));
+		output = output.replaceFirst(illegalString + "4", Double.toString(produktbatchkomponent.getNetto()));
+		output = output.replaceFirst(illegalString + "5", Integer.toString(produktbatchkomponent.getOprId()));
+		return output;
+	}
+	
+	public String updateProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent){
+		String output = sqlCommands[13];
+		output = output.replaceFirst(illegalString + "1", Double.toString(produktbatchkomponent.getTara()));
+		output = output.replaceFirst(illegalString + "2", Double.toString(produktbatchkomponent.getNetto()));
+		output = output.replaceFirst(illegalString + "3", Integer.toString(produktbatchkomponent.getOprId()));
+		output = output.replaceFirst(illegalString + "4", Integer.toString(produktbatchkomponent.getPbId()));
+		output = output.replaceFirst(illegalString + "5", Integer.toString(produktbatchkomponent.getRbId()));
 		return output;
 	}
 

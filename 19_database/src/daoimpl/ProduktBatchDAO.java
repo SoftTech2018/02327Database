@@ -1,5 +1,6 @@
 package daoimpl;
 
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,10 +12,16 @@ import daointerfaces.IProduktBatchDAO;
 import dto.ProduktBatchDTO;
 
 public class ProduktBatchDAO implements IProduktBatchDAO {
+	
+	private TextReader txt;
+	
+	public ProduktBatchDAO() throws FileNotFoundException{
+		txt = new TextReader();
+	}
 
 	@Override
 	public ProduktBatchDTO getProduktBatch(int pbId) throws DALException {
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = " + pbId);		
+		ResultSet rs = Connector.doQuery(txt.getProductBatch(pbId));		
 	    try {
 	    	if (!rs.first()) throw new DALException("Produktbatch " + pbId + " findes ikke");
 	    	return new ProduktBatchDTO (rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recept_id"));
@@ -25,7 +32,7 @@ public class ProduktBatchDAO implements IProduktBatchDAO {
 	@Override
 	public List<ProduktBatchDTO> getProduktBatchList() throws DALException {
 		List<ProduktBatchDTO> list = new ArrayList<ProduktBatchDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatch");
+		ResultSet rs = Connector.doQuery(txt.getCommand(6));
 		try {
 			while (rs.next()) {
 				list.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recept_id")));
@@ -36,18 +43,12 @@ public class ProduktBatchDAO implements IProduktBatchDAO {
 
 	@Override
 	public void createProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
-		Connector.doUpdate(
-				"INSERT INTO produktbatch (pb_id, status, recept_id) VALUES " +
-				"(" + produktbatch.getPbId() + ", " + produktbatch.getStatus() + ", " + produktbatch.getReceptId() + ")"
-			);
+		Connector.doUpdate(txt.createProductBatch(produktbatch));
 	}
 
 	@Override
 	public void updateProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
-		Connector.doUpdate(
-				"UPDATE produktbatch SET status =  " + produktbatch.getStatus() + 
-				", recept_id = " + produktbatch.getReceptId() + " WHERE pb_id = " + produktbatch.getPbId()
-		);
+		Connector.doUpdate(txt.updateProduktBatch(produktbatch));
 	}
 
 }
