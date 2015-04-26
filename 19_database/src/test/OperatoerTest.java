@@ -17,7 +17,7 @@ public class OperatoerTest {
 		opr = new OperatoerDAO();		
 	}
 	
-	public void listTest(){
+	public void listTest() throws DALException{
 		try {
 			System.out.println("---------------- Liste over operatører: ----------------");			
 			for(OperatoerDTO oprDto : opr.getOperatoerList()){
@@ -36,8 +36,9 @@ public class OperatoerTest {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			opr.dropView();
 		}
 	}
-	
 	
 }
