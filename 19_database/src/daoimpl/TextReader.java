@@ -231,5 +231,11 @@ public class TextReader {
 		output = output.replaceFirst(illegalString + "3", Integer.toString(raavare.getRaavareId()));
 		return output;
 	}
+	
+	public String getFunction(int id){
+		String output = sqlCommands[41];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(id));
+		return output;
+	}
 
 }

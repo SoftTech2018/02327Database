@@ -29,3 +29,13 @@ SELECT * FROM raavare WHERE raavare_id = #1
 SELECT * FROM raavare
 INSERT INTO raavare(raavare_id, raavare_navn, leverandoer) VALUES (#1, '#2', '#3')
 UPDATE raavare SET raavare_navn = '#1', leverandoer = '#2' WHERE raavare_id = #3
+CREATE TRIGGER oprTrig BEFORE INSERT ON operatoer FOR EACH ROW SET new.ini = 'trigger aktiveret!'
+select * from oprView
+CREATE PROCEDURE setView() begin CREATE VIEW oprView AS SELECT opr_id, opr_navn, ini FROM operatoer; END;
+call setView()
+CREATE FUNCTION oprID(oID INT) RETURNS VARCHAR(20) BEGIN DECLARE navn VARCHAR(20); SELECT opr_navn INTO navn FROM operatoer WHERE opr_id = oID; RETURN navn; END;
+drop view oprView
+drop trigger oprTrig
+drop procedure setView
+drop function oprID
+SELECT oprID(#1)
