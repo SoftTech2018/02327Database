@@ -15,7 +15,8 @@ public class OperatoerTest {
 	int temp = 0;
 	
 	public OperatoerTest() throws FileNotFoundException, DALException{
-		opr = new OperatoerDAO();		
+		opr = new OperatoerDAO();
+		opr.callProcedure();
 	}
 	
 	public void listTest() throws DALException{
@@ -43,8 +44,7 @@ public class OperatoerTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			opr.dropView();
-			opr.dropTrigger();
+			opr.dropAll();
 		}
 	}
 	

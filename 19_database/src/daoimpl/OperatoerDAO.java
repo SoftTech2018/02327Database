@@ -15,14 +15,14 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 	TextReader txt;
 	
-	public OperatoerDAO() throws FileNotFoundException{
+	public OperatoerDAO() throws FileNotFoundException, DALException{
 		txt = new TextReader();
 		try {
-			Connector.doUpdate("create view oprView as select opr_id, opr_navn, ini from operatoer");
-			Connector.doUpdate("CREATE TRIGGER oprTrig BEFORE INSERT ON operatoer FOR EACH ROW SET new.ini = 'trigger test'");
+			Connector.doUpdate("CREATE TRIGGER oprTrig BEFORE INSERT ON operatoer FOR EACH ROW SET new.ini = 'trigger aktiveret!'");
 		} catch (DALException e) {
 			e.printStackTrace();
 		}
+		this.setProcedure();
 	}
 	
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
@@ -61,13 +61,20 @@ public class OperatoerDAO implements IOperatoerDAO {
 		
 	}
 	
-	public void dropView() throws DALException {
-		Connector.doUpdate("drop view oprView");
+	public void setProcedure() throws DALException{
+		Connector.doUpdate("CREATE PROCEDURE setView() begin CREATE VIEW oprView AS SELECT opr_id, opr_navn, ini FROM operatoer; END;");
 	}
 	
-	public void dropTrigger() throws DALException {
-		Connector.doUpdate("drop trigger oprTrig");
+	public void callProcedure() throws DALException{
+		Connector.doUpdate("call setView()");
 	}
+	
+	public void dropAll() throws DALException {
+		Connector.doUpdate("drop view oprView");
+		Connector.doUpdate("drop trigger oprTrig");
+		Connector.doUpdate("drop procedure setView");
+	}
+	
 		
 }
 	

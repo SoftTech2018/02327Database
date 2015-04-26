@@ -11,6 +11,6 @@ public interface IOperatoerDAO {
 	void createOperatoer(OperatoerDTO opr) throws DALException;
 	void updateOperatoer(OperatoerDTO opr) throws DALException;
 	public ResultSet getView() throws DALException;
-	public void dropView() throws DALException;
-	public void dropTrigger() throws DALException;
+	public void callProcedure() throws DALException;
+	public void dropAll() throws DALException;	
 }
