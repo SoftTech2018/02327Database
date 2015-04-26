@@ -17,11 +17,7 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 	public OperatoerDAO() throws FileNotFoundException, DALException{
 		txt = new TextReader();
-		try {
-			Connector.doUpdate("CREATE TRIGGER oprTrig BEFORE INSERT ON operatoer FOR EACH ROW SET new.ini = 'trigger aktiveret!'");
-		} catch (DALException e) {
-			e.printStackTrace();
-		}
+		Connector.doUpdate("CREATE TRIGGER oprTrig BEFORE INSERT ON operatoer FOR EACH ROW SET new.ini = 'trigger aktiveret!'");
 		this.setProcedure();
 	}
 	
