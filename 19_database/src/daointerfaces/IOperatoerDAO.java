@@ -12,4 +12,5 @@ public interface IOperatoerDAO {
 	void updateOperatoer(OperatoerDTO opr) throws DALException;
 	public ResultSet getView() throws DALException;
 	public void dropView() throws DALException;
+	public void dropTrigger() throws DALException;
 }

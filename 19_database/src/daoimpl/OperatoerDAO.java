@@ -19,6 +19,7 @@ public class OperatoerDAO implements IOperatoerDAO {
 		txt = new TextReader();
 		try {
 			Connector.doUpdate("create view oprView as select opr_id, opr_navn, ini from operatoer");
+			Connector.doUpdate("CREATE TRIGGER oprTrig BEFORE INSERT ON operatoer FOR EACH ROW SET new.ini = 'trigger test'");
 		} catch (DALException e) {
 			e.printStackTrace();
 		}
@@ -62,6 +63,10 @@ public class OperatoerDAO implements IOperatoerDAO {
 	
 	public void dropView() throws DALException {
 		Connector.doUpdate("drop view oprView");
+	}
+	
+	public void dropTrigger() throws DALException {
+		Connector.doUpdate("drop trigger oprTrig");
 	}
 		
 }
