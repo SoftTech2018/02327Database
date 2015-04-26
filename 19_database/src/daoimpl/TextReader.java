@@ -11,6 +11,10 @@ import java.util.List;
 import dto.OperatoerDTO;
 import dto.ProduktBatchDTO;
 import dto.ProduktBatchKompDTO;
+import dto.RaavareBatchDTO;
+import dto.RaavareDTO;
+import dto.ReceptDTO;
+import dto.ReceptKompDTO;
 
 public class TextReader {
 	
@@ -124,6 +128,107 @@ public class TextReader {
 		output = output.replaceFirst(illegalString + "3", Integer.toString(produktbatchkomponent.getOprId()));
 		output = output.replaceFirst(illegalString + "4", Integer.toString(produktbatchkomponent.getPbId()));
 		output = output.replaceFirst(illegalString + "5", Integer.toString(produktbatchkomponent.getRbId()));
+		return output;
+	}
+	
+	public String getRecept(int receptId){
+		String output = sqlCommands[14];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(receptId));
+		return output;
+	}
+	
+	public String createRecept(ReceptDTO recept){
+		String output = sqlCommands[16];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(recept.getReceptId()));
+		output = output.replaceFirst(illegalString + "2", recept.getReceptNavn());
+		return output;
+	}
+	
+	public String updateRecept(ReceptDTO recept){
+		String output = sqlCommands[17];
+		output = output.replaceFirst(illegalString + "1", recept.getReceptNavn());
+		output = output.replaceFirst(illegalString + "2", Integer.toString(recept.getReceptId()));
+		return output;
+	}
+	
+	public String getReceptKomp(int receptId, int raavareId){
+		String output = sqlCommands[18];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(receptId));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(raavareId));
+		return output;
+	}
+	
+	public String getReceptKompList(int receptId){
+		String output = sqlCommands[19];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(receptId));
+		return output;
+	}
+	
+	public String createReceptKomp(ReceptKompDTO receptkomponent){
+		String output = sqlCommands[21];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(receptkomponent.getReceptId()));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(receptkomponent.getRaavareId()));
+		output = output.replaceFirst(illegalString + "3", Double.toString(receptkomponent.getNomNetto()));
+		output = output.replaceFirst(illegalString + "4", Double.toString(receptkomponent.getTolerance()));
+		return output;
+	}
+	
+	public String updateReceptKomp(ReceptKompDTO receptkomponent){
+		String output = sqlCommands[22];
+		output = output.replaceFirst(illegalString + "1", Double.toString(receptkomponent.getNomNetto()));
+		output = output.replaceFirst(illegalString + "2", Double.toString(receptkomponent.getTolerance()));
+		output = output.replaceFirst(illegalString + "3", Integer.toString(receptkomponent.getReceptId()));
+		output = output.replaceFirst(illegalString + "4", Integer.toString(receptkomponent.getRaavareId()));
+		return output;
+	}
+	
+	public String getRaavareBatch(int rbId){
+		String output = sqlCommands[23];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(rbId));
+		return output;
+	}
+	
+	public String getRaavareBatchList(int raavareId){
+		String output = sqlCommands[25];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(raavareId));
+		return output;
+	}
+	
+	public String createRaavareBatch(RaavareBatchDTO raavarebatch){
+		String output = sqlCommands[26];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(raavarebatch.getRbId()));
+		output = output.replaceFirst(illegalString + "2", Integer.toString(raavarebatch.getRaavareId()));
+		output = output.replaceFirst(illegalString + "3", Double.toString(raavarebatch.getMaengde()));
+		return output;
+	}
+	
+	public String updateRaavareBatch(RaavareBatchDTO raavarebatch){
+		String output = sqlCommands[27];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(raavarebatch.getRaavareId()));
+		output = output.replaceFirst(illegalString + "2", Double.toString(raavarebatch.getMaengde()));
+		output = output.replaceFirst(illegalString + "3", Integer.toString(raavarebatch.getRbId()));
+		return output;
+	}
+	
+	public String getRaavare(int raavareId){
+		String output = sqlCommands[28];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(raavareId));
+		return output;
+	}
+	
+	public String createRaavare(RaavareDTO raavare){
+		String output = sqlCommands[30];
+		output = output.replaceFirst(illegalString + "1", Integer.toString(raavare.getRaavareId()));
+		output = output.replaceFirst(illegalString + "2", raavare.getRaavareNavn());
+		output = output.replaceFirst(illegalString + "3", raavare.getLeverandoer());
+		return output;
+	}
+	
+	public String updateRaavare(RaavareDTO raavare){
+		String output = sqlCommands[31];
+		output = output.replaceFirst(illegalString + "1", raavare.getRaavareNavn());
+		output = output.replaceFirst(illegalString + "2", raavare.getLeverandoer());
+		output = output.replaceFirst(illegalString + "3", Integer.toString(raavare.getRaavareId()));
 		return output;
 	}
 

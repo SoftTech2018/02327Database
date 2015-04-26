@@ -1,5 +1,6 @@
 package daoimpl;
 
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,10 +12,16 @@ import daointerfaces.IReceptKompDAO;
 import dto.ReceptKompDTO;
 
 public class ReceptKompDAO implements IReceptKompDAO {
+	
+	private TextReader txt;
+	
+	public ReceptKompDAO() throws FileNotFoundException{
+		txt = new TextReader();
+	}
 
 	@Override
 	public ReceptKompDTO getReceptKomp(int receptId, int raavareId) throws DALException {
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent WHERE recept_id = " + receptId + " and raavare_id = "+raavareId);		
+		ResultSet rs = Connector.doQuery(txt.getReceptKomp(receptId, raavareId));		
 	    try {
 	    	if (!rs.first()) throw new DALException("ReceptKomponent " + receptId + ", " + raavareId + " findes ikke");
 	    	return new ReceptKompDTO (rs.getInt("recept_id"), rs.getInt("raavare_id"), rs.getDouble("nom_netto"),rs.getDouble("tolerance"));
@@ -25,7 +32,7 @@ public class ReceptKompDAO implements IReceptKompDAO {
 	@Override
 	public List<ReceptKompDTO> getReceptKompList(int receptId) throws DALException {
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent where recept_id = " + receptId);
+		ResultSet rs = Connector.doQuery(txt.getReceptKompList(receptId));
 		try {
 			while (rs.next()) {
 				list.add(new ReceptKompDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"), rs.getDouble("nom_netto"),rs.getDouble("tolerance")));
@@ -37,7 +44,7 @@ public class ReceptKompDAO implements IReceptKompDAO {
 	@Override
 	public List<ReceptKompDTO> getReceptKompList() throws DALException {
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM receptkomponent");
+		ResultSet rs = Connector.doQuery(txt.getCommand(20));
 		try {
 			while (rs.next()) {
 				list.add(new ReceptKompDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"), rs.getDouble("nom_netto"),rs.getDouble("tolerance")));
@@ -48,20 +55,12 @@ public class ReceptKompDAO implements IReceptKompDAO {
 
 	@Override
 	public void createReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
-		Connector.doUpdate(
-				"INSERT INTO receptkomponent (recept_id, raavare_id, nom_netto, tolerance) VALUES " +
-				"("+receptkomponent.getReceptId()+", "+receptkomponent.getRaavareId()+", "+receptkomponent.getNomNetto()+
-				", "+receptkomponent.getTolerance()+")"
-			);
+		Connector.doUpdate(txt.createReceptKomp(receptkomponent));
 	}
 
 	@Override
 	public void updateReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
-		Connector.doUpdate(
-				"UPDATE produktbatchkomponent SET nom_netto = "+receptkomponent.getNomNetto()+", tolerance"+
-						receptkomponent.getTolerance()+
-				" WHERE recept_id = "+receptkomponent.getReceptId()+" and raavare_id = "+receptkomponent.getRaavareId()
-				);
+		Connector.doUpdate(txt.updateReceptKomp(receptkomponent));
 	}
 
 }
