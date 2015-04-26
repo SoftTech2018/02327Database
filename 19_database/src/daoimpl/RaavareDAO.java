@@ -15,8 +15,8 @@ public class RaavareDAO implements IRaavareDAO {
 	
 private TextReader txt;
 	
-	public RaavareDAO() throws FileNotFoundException{
-		txt = new TextReader();
+	public RaavareDAO(TextReader txt) throws FileNotFoundException{
+		this.txt = txt;
 	}
 
 	@Override

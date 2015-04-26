@@ -1,6 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+
 import daoimpl.ReceptKompDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IReceptKompDAO;
 import dto.ReceptKompDTO;
@@ -8,8 +11,8 @@ import dto.ReceptKompDTO;
 public class ReceptKompTest {
 	IReceptKompDAO rk;
 	
-	public ReceptKompTest(){
-		rk = new ReceptKompDAO();
+	public ReceptKompTest(TextReader txt) throws FileNotFoundException{
+		rk = new ReceptKompDAO(txt);
 	}
 	
 	public void listTest(){

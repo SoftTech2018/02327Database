@@ -15,8 +15,8 @@ public class ReceptKompDAO implements IReceptKompDAO {
 	
 	private TextReader txt;
 	
-	public ReceptKompDAO() throws FileNotFoundException{
-		txt = new TextReader();
+	public ReceptKompDAO(TextReader txt) throws FileNotFoundException{
+		this.txt = txt;
 	}
 
 	@Override

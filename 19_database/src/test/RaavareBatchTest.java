@@ -1,6 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+
 import daoimpl.RaavareBatchDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IRaavareBatchDAO;
 import dto.RaavareBatchDTO;
@@ -8,8 +11,8 @@ import dto.RaavareBatchDTO;
 public class RaavareBatchTest {
 	IRaavareBatchDAO rb;
 	
-	public RaavareBatchTest(){
-		rb = new RaavareBatchDAO();
+	public RaavareBatchTest(TextReader txt) throws FileNotFoundException{
+		rb = new RaavareBatchDAO(txt);
 	}
 	
 	public void listTest(){

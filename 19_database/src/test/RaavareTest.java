@@ -1,6 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+
 import daoimpl.RaavareDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IRaavareDAO;
 import dto.RaavareDTO;
@@ -8,8 +11,8 @@ import dto.RaavareDTO;
 public class RaavareTest {
 	IRaavareDAO r;
 	
-	public RaavareTest(){
-		r = new RaavareDAO();
+	public RaavareTest(TextReader txt) throws FileNotFoundException{
+		r = new RaavareDAO(txt);
 	}
 	
 	public void listTest(){

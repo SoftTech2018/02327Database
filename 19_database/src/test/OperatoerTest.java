@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import daoimpl.OperatoerDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IOperatoerDAO;
 import dto.OperatoerDTO;
@@ -14,8 +15,8 @@ public class OperatoerTest {
 	ResultSet rs;
 	int temp = 0;
 	
-	public OperatoerTest() throws FileNotFoundException, DALException{
-		opr = new OperatoerDAO();
+	public OperatoerTest(TextReader txt) throws FileNotFoundException, DALException{
+		opr = new OperatoerDAO(txt);
 		opr.callProcedure();
 		opr.setFunction();
 	}

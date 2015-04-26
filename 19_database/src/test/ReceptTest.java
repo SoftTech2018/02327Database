@@ -1,6 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+
 import daoimpl.ReceptDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IReceptDAO;
 import dto.ReceptDTO;
@@ -8,8 +11,8 @@ import dto.ReceptDTO;
 public class ReceptTest {
 	IReceptDAO r;
 	
-	public ReceptTest(){
-		r = new ReceptDAO();
+	public ReceptTest(TextReader txt) throws FileNotFoundException{
+		r = new ReceptDAO(txt);
 	}
 	
 	public void listTest(){

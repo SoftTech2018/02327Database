@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import connector.Connector;
 import daoimpl.ProduktBatchKompDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IProduktBatchKompDAO;
 import dto.ProduktBatchDTO;
@@ -36,8 +37,8 @@ public class ProduktBatchKompJunit {
 		catch (IllegalAccessException e) { e.printStackTrace(); }
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
-		
-		produktBKDAO = new ProduktBatchKompDAO();
+		TextReader txt = new TextReader();
+		produktBKDAO = new ProduktBatchKompDAO(txt);
 	}
 
 	@After

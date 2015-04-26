@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import connector.Connector;
 import daoimpl.RaavareBatchDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IRaavareBatchDAO;
 import dto.RaavareBatchDTO;
@@ -35,8 +36,8 @@ public class RaavareBatchJunit {
 		catch (IllegalAccessException e) { e.printStackTrace(); }
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
-		
-		raavareBDAO = new RaavareBatchDAO();		
+		TextReader txt = new TextReader();
+		raavareBDAO = new RaavareBatchDAO(txt);		
 	}
 
 	@After

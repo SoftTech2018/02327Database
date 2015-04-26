@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import connector.Connector;
 import daoimpl.ReceptDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IReceptDAO;
 import dto.ReceptDTO;
@@ -35,8 +36,8 @@ public class ReceptJunit {
 		catch (IllegalAccessException e) { e.printStackTrace(); }
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
-		
-		receptDAO = new ReceptDAO();
+		TextReader txt = new TextReader();
+		receptDAO = new ReceptDAO(txt);
 	}
 
 	@After

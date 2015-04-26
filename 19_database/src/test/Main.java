@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 import connector.Connector;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 
 public class Main {
@@ -26,14 +27,15 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
+		TextReader txt = new TextReader();
 		
-		OperatoerTest oprTest = new OperatoerTest();
-		ProduktBatchTest pbTest = new ProduktBatchTest();
-		ProduktBatchKompTest pbkTest = new ProduktBatchKompTest();
-		ReceptTest rTest = new ReceptTest();
-		ReceptKompTest rkTest = new ReceptKompTest();
-		RaavareTest raTest = new RaavareTest();
-		RaavareBatchTest rabTest = new RaavareBatchTest();
+		OperatoerTest oprTest = new OperatoerTest(txt);
+		ProduktBatchTest pbTest = new ProduktBatchTest(txt);
+		ProduktBatchKompTest pbkTest = new ProduktBatchKompTest(txt);
+		ReceptTest rTest = new ReceptTest(txt);
+		ReceptKompTest rkTest = new ReceptKompTest(txt);
+		RaavareTest raTest = new RaavareTest(txt);
+		RaavareBatchTest rabTest = new RaavareBatchTest(txt);
 		oprTest.listTest();
 		pbTest.listTest();
 		pbkTest.listTest();

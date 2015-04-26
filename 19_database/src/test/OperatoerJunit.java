@@ -1,5 +1,5 @@
 package test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 
@@ -11,24 +11,12 @@ import org.junit.Test;
 
 import connector.Connector;
 import daoimpl.OperatoerDAO;
-import daoimpl.ProduktBatchKompDAO;
-import daoimpl.RaavareBatchDAO;
-import daoimpl.RaavareDAO;
-import daoimpl.ReceptDAO;
 import daoimpl.ReceptKompDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IOperatoerDAO;
-import daointerfaces.IProduktBatchKompDAO;
-import daointerfaces.IRaavareBatchDAO;
-import daointerfaces.IRaavareDAO;
-import daointerfaces.IReceptDAO;
 import daointerfaces.IReceptKompDAO;
 import dto.OperatoerDTO;
-import dto.ProduktBatchKompDTO;
-import dto.RaavareBatchDTO;
-import dto.RaavareDTO;
-import dto.ReceptDTO;
-import dto.ReceptKompDTO;
 
 public class OperatoerJunit {
 	
@@ -55,11 +43,11 @@ public class OperatoerJunit {
 		catch (IllegalAccessException e) { e.printStackTrace(); }
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
+		TextReader txt = new TextReader();
+		oprDAO = new OperatoerDAO(txt);
 		
-		oprDAO = new OperatoerDAO();
 		
-		
-		receptKDAO = new ReceptKompDAO();
+		receptKDAO = new ReceptKompDAO(txt);
 		
 		
 	}

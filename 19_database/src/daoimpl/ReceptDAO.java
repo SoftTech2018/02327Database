@@ -15,8 +15,8 @@ public class ReceptDAO implements IReceptDAO {
 	
 	private TextReader txt;
 	
-	public ReceptDAO() throws FileNotFoundException{
-		txt = new TextReader();
+	public ReceptDAO(TextReader txt) throws FileNotFoundException{
+		this.txt = txt;
 	}
 
 	@Override

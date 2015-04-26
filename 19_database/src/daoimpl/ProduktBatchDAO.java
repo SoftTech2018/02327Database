@@ -15,8 +15,8 @@ public class ProduktBatchDAO implements IProduktBatchDAO {
 	
 	private TextReader txt;
 	
-	public ProduktBatchDAO() throws FileNotFoundException{
-		txt = new TextReader();
+	public ProduktBatchDAO(TextReader txt) throws FileNotFoundException{
+		this.txt = txt;
 	}
 
 	@Override

@@ -1,6 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+
 import daoimpl.ProduktBatchKompDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IProduktBatchKompDAO;
 import dto.ProduktBatchKompDTO;
@@ -8,8 +11,8 @@ import dto.ProduktBatchKompDTO;
 public class ProduktBatchKompTest {
 	IProduktBatchKompDAO pbk;
 	
-	public ProduktBatchKompTest(){
-		pbk = new ProduktBatchKompDAO();
+	public ProduktBatchKompTest(TextReader txt) throws FileNotFoundException{
+		pbk = new ProduktBatchKompDAO(txt);
 	}
 	
 	public void listTest(){

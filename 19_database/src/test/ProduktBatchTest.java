@@ -1,6 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+
 import daoimpl.ProduktBatchDAO;
+import daoimpl.TextReader;
 import daointerfaces.DALException;
 import daointerfaces.IProduktBatchDAO;
 import dto.ProduktBatchDTO;
@@ -8,8 +11,8 @@ import dto.ProduktBatchDTO;
 public class ProduktBatchTest {
 	IProduktBatchDAO pb;
 	
-	public ProduktBatchTest(){
-		pb = new ProduktBatchDAO();
+	public ProduktBatchTest(TextReader txt) throws FileNotFoundException{
+		pb = new ProduktBatchDAO(txt);
 	}
 	
 	public void listTest(){

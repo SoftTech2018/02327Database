@@ -15,8 +15,8 @@ public class RaavareBatchDAO implements IRaavareBatchDAO {
 	
 	private TextReader txt;
 	
-	public RaavareBatchDAO() throws FileNotFoundException{
-		txt = new TextReader();
+	public RaavareBatchDAO(TextReader txt) throws FileNotFoundException{
+		this.txt = txt;
 	}
 
 	@Override
