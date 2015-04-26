@@ -47,6 +47,7 @@ public class Connector
 		conn	= connectToDatabase("jdbc:mysql://"+server+":"+port+"/"+database,
 					username, password);
 		stm		= conn.createStatement();
+		
 	}
 	
 	public Connector() throws InstantiationException, IllegalAccessException,

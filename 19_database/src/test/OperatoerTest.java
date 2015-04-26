@@ -17,6 +17,7 @@ public class OperatoerTest {
 	public OperatoerTest() throws FileNotFoundException, DALException{
 		opr = new OperatoerDAO();
 		opr.callProcedure();
+		opr.setFunction();
 	}
 	
 	public void listTest() throws DALException{
@@ -37,6 +38,12 @@ public class OperatoerTest {
 			while(rs.next()){
 				System.out.println(rs.getInt("opr_id")+"\t"+rs.getString("opr_navn")+"   \t"+rs.getString("ini"));
 			}
+			System.out.println("--------------------------------------------------------");
+			System.out.println();
+			System.out.println();
+			System.out.println("-------------------- Function test: --------------------");
+			System.out.println("Returner navn med opr_id = 1:");
+			System.out.println(opr.getFunction(1));
 			System.out.println("--------------------------------------------------------");
 			System.out.println();
 		} catch (DALException e) {
