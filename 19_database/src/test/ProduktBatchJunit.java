@@ -70,7 +70,7 @@ public class ProduktBatchJunit {
 	
 	@Test
 	public void updateProduktBatchTest() {
-		int pbID = 0;
+		int pbID = 1;
 		try {
 			for(ProduktBatchDTO pbDto : produktBDAO.getProduktBatchList()){
 				if (String.valueOf(pbDto.getStatus()).startsWith("10")){

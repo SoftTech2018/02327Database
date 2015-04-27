@@ -31,6 +31,7 @@ public class TextReader {
 	private String[] readFile(File fil) throws FileNotFoundException{
 		List<String> data = new ArrayList<String>();
 		String linje = null;
+		data.add(null);
 		try (BufferedReader br = new BufferedReader(new FileReader(fil));){
 			while ((linje = br.readLine()) != null){
 				data.add(linje);
@@ -47,17 +48,17 @@ public class TextReader {
 	 * @return Teksten på linjenummeret
 	 */
 	public String getCommand(int cmd){
-		return sqlCommands[cmd-1];
+		return sqlCommands[cmd];
 	}
 	
 	public String getOperatoer(int oprID){
-		String output = sqlCommands[0];
+		String output = sqlCommands[1];
 		output = output.replaceFirst(illegalString + "1", Integer.toString(oprID));
 		return output;
 	}
 	
 	public String createOperatoer(OperatoerDTO opr){
-		String output = sqlCommands[1];
+		String output = sqlCommands[2];
 		output = output.replaceFirst(illegalString + "1", Integer.toString(opr.getOprId()));
 		output = output.replaceFirst(illegalString + "2", opr.getOprNavn());
 		output = output.replaceFirst(illegalString + "3", opr.getIni());
@@ -67,7 +68,7 @@ public class TextReader {
 	}
 	
 	public String updateOperatoer(OperatoerDTO opr){
-		String output = sqlCommands[2];
+		String output = sqlCommands[3];
 		output = output.replaceFirst(illegalString + "1", opr.getOprNavn());
 		output = output.replaceFirst(illegalString + "2", opr.getIni());
 		output = output.replaceFirst(illegalString + "3", opr.getCpr());
