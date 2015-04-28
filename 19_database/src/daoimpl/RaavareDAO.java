@@ -32,7 +32,7 @@ private TextReader txt;
 	@Override
 	public List<RaavareDTO> getRaavareList() throws DALException {
 		List<RaavareDTO> list = new ArrayList<RaavareDTO>();
-		ResultSet rs = Connector.doQuery(txt.getCommand(28));
+		ResultSet rs = Connector.doQuery(txt.getCommand(29));
 		try {
 			while (rs.next()) {
 				list.add(new RaavareDTO(rs.getInt("raavare_id"), rs.getString("raavare_navn"), rs.getString("leverandoer")));
