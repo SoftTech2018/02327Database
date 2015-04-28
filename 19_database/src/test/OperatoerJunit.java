@@ -75,7 +75,7 @@ public class OperatoerJunit {
 				}				
 			}
 			oprID++;
-			oprDAO.createOperatoer(new OperatoerDTO(oprID, "test"+oprID, "test"+oprID, "test"+oprID, "test"+oprID));
+			oprDAO.createOperatoer(new OperatoerDTO(oprID, "test"+oprID, "test"+oprID, "test"+oprID, "test"+oprID, true, true, true));
 			assertEquals("test"+oprID, oprDAO.getOperatoer(oprID).getOprNavn());
 		} catch (DALException e) {e.printStackTrace();}		
 	}
@@ -90,7 +90,7 @@ public class OperatoerJunit {
 					break;
 				}				
 			}
-			oprDAO.updateOperatoer(new OperatoerDTO(oprID, "update test"+oprID, "update test"+oprID, "update test"+oprID, "update test"+oprID));
+			oprDAO.updateOperatoer(new OperatoerDTO(oprID, "update test"+oprID, "update test"+oprID, "update test"+oprID, "update test"+oprID, true, true, true));
 			assertEquals("update test"+oprID, oprDAO.getOperatoer(oprID).getOprNavn());
 		} catch (DALException e) {e.printStackTrace();}		
 	}

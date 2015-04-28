@@ -34,7 +34,7 @@ public class OperatoerTest {
 			System.out.println();
 			System.out.println("-------------------- Operatør view: --------------------");
 			temp++;
-			opr.createOperatoer(new OperatoerDTO(temp, "test"+temp, "test"+temp, "test"+temp, "test"+temp));
+			opr.createOperatoer(new OperatoerDTO(temp, "test"+temp, "test"+temp, "test"+temp, "test"+temp, true, true, true));
 			rs = opr.getView();
 			while(rs.next()){
 				System.out.println(rs.getInt("opr_id")+"\t"+rs.getString("opr_navn")+"   \t"+rs.getString("ini"));
